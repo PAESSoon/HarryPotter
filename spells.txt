@@ -1,0 +1,4 @@
+Incarcarous	5	10	0.5
+Sonorus	1	7	0.9
+Crucio	10	10	0.05
+Aguamenti	7	10	0.3
