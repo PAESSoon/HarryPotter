@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -5,13 +7,34 @@ import java.util.Scanner;
 public class SorcererBattle {
 
 	private static Random random = new Random();
-	final static String playerText = "player.txt";
+	final static String[] playerArray = {"hermione", "Harry", "ron"};
 	final static String deathEaterText = "deathEater.txt";
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		
+		String player = selectPlayer(playerArray);
 
-		SorcererBattle.playGame("player.txt", "deathEater.txt", "spells.txt");
+		SorcererBattle.playGame(player + ".txt", "deathEater.txt", "spells.txt");
 
+	}
+	
+	public static String selectPlayer(String[] players) throws IOException {
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Players Available: ");
+		
+		for (String item: playerArray) {
+			System.out.println(item);
+		}
+		
+		System.out.print("Select your player: ");
+		
+		String playerSelected = input.nextLine();
+		
+		return playerSelected;
+	
+		
 	}
 
 	public static void playGame(String player, String deathEater, String spell) {
@@ -191,12 +214,12 @@ public class SorcererBattle {
 
 			System.out.println("\nFantastic! You killed the deathEater!");
 
-			Character newCharacter = FileIO.readCharacter(playerText);
+			Character newCharacter = FileIO.readCharacter(player);
 
 			newPlayer.setmaxEnergy(newCharacter.getmaxEnergy());
 
-			FileIO.writeCharacter(newPlayer, playerText);
-			System.out.println("Successfuly wrote to file: player.txt");
+			FileIO.writeCharacter(newPlayer, player);
+			System.out.println("Successfuly wrote to file: " + player);
 			System.out.println(newPlayer.getName() + " has won " + newPlayer.getnumWins() + " times.");
 
 		} else {
