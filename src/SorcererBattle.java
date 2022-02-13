@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class SorcererBattle {
 
 	private static Random random = new Random();
-	final static String[] playerArray = {"hermione", "Harry", "ron"};
+	final static String[] playerArray = {"hermione", "harry", "ron"};
 	final static String deathEaterText = "deathEater.txt";
 
 	public static void main(String[] args) throws IOException {
